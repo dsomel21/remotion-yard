@@ -1,11 +1,12 @@
 const async = require('async');
 
 /* Refactored From: https://github.com/TinyNova/aws-transcription-to-srt/blob/master/index.js*/
-function convertToSrt(json) {
+function formatCaptions(json, fps) {
   if (json.results.items.length === 0) {
     return '';
   }
 
+  const output = [];
   let convertedOutput = '';
   let subtitleIndex = 1;
   let currentStart = json.results.items[0].start_time;
@@ -14,15 +15,29 @@ function convertToSrt(json) {
   let nextLine = '';
 
   async.eachOf(json.results.items, function (item, index) {
+    const row = {};
     if (item.type === 'punctuation') {
       nextLine = nextLine.slice(0, -1); //Remove the space before punctuation
       nextLine += item.alternatives[0].content;
       console.log('currentStart', currentStart);
       formattedStart = secondsToMinutes(currentStart);
-      formattedEnd = secondsToMinutes(json.results.items[index - 1].end_time);
+      const currentEnd = json.results.items[index - 1].end_time;
+      formattedEnd = secondsToMinutes(currentEnd);
+
       convertedOutput += `${subtitleIndex++}\n`;
       convertedOutput += formattedStart + ' --> ' + formattedEnd + '\n';
       convertedOutput += nextLine + '\n\n';
+
+      output.push({
+        id: subtitleIndex,
+        timestamps: [formattedStart, formattedEnd],
+        framestamps: [
+          Math.floor(currentStart * fps),
+          Math.floor(currentEnd * fps),
+        ],
+        content: nextLine,
+      });
+
       nextLine = '';
       let nextItem = json.results.items[index + 1];
       if (nextItem) {
@@ -33,10 +48,20 @@ function convertToSrt(json) {
       json.results.items[index - 1]
     ) {
       formattedStart = secondsToMinutes(currentStart);
-      formattedEnd = secondsToMinutes(json.results.items[index - 1].end_time);
+      const currentEnd = json.results.items[index - 1].end_time;
+      formattedEnd = secondsToMinutes(currentEnd);
       convertedOutput += `${subtitleIndex++}\n`;
       convertedOutput += formattedStart + ' --> ' + formattedEnd + '\n';
       convertedOutput += nextLine + '\n\n';
+      output.push({
+        id: subtitleIndex,
+        timestamps: [formattedStart, formattedEnd],
+        framestamps: [
+          Math.floor(currentStart * fps),
+          Math.floor(currentEnd * fps),
+        ],
+        content: nextLine,
+      });
       nextLine = item.alternatives[0].content + ' ';
       currentStart = item.start_time;
     } else {
@@ -63,7 +88,7 @@ function convertToSrt(json) {
     convertedOutput += nextLine; //Add any leftover words to the end
   }
 
-  return convertedOutput;
+  return output;
 }
 
 function padString(string, length) {
@@ -86,7 +111,6 @@ function secondsToMinutes(seconds) {
   );
 }
 
-module.exports = convertToSrt;
 /* TODO: Turn this into a class with types */
 
 /* output: [
@@ -100,7 +124,7 @@ module.exports = convertToSrt;
 */
 
 const jsonBlob = require('../assets/spidermanTranscribed.json');
-const srt = convertToSrt(jsonBlob);
+const srt = formatCaptions(jsonBlob, 30);
 
-// console.log(srt);
+console.log(srt);
 // export const createCaptions = (blob, fps) => {};
