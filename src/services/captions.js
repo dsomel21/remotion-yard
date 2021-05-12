@@ -1,13 +1,13 @@
-const async = require('async');
+import async from 'async';
 
 /* Refactored From: https://github.com/TinyNova/aws-transcription-to-srt/blob/master/index.js*/
-function formatCaptions(json, fps) {
+export const formatCaptions = (json, fps) => {
+  console.log(`Formatting Captions: @ ${fps}fps`);
   if (json.results.items.length === 0) {
     return '';
   }
 
   const output = [];
-  let convertedOutput = '';
   let subtitleIndex = 1;
   let currentStart = json.results.items[0].start_time;
   let formattedStart;
@@ -19,14 +19,9 @@ function formatCaptions(json, fps) {
     if (item.type === 'punctuation') {
       nextLine = nextLine.slice(0, -1); //Remove the space before punctuation
       nextLine += item.alternatives[0].content;
-      console.log('currentStart', currentStart);
       formattedStart = secondsToMinutes(currentStart);
       const currentEnd = json.results.items[index - 1].end_time;
       formattedEnd = secondsToMinutes(currentEnd);
-
-      convertedOutput += `${subtitleIndex++}\n`;
-      convertedOutput += formattedStart + ' --> ' + formattedEnd + '\n';
-      convertedOutput += nextLine + '\n\n';
 
       output.push({
         id: subtitleIndex,
@@ -50,9 +45,6 @@ function formatCaptions(json, fps) {
       formattedStart = secondsToMinutes(currentStart);
       const currentEnd = json.results.items[index - 1].end_time;
       formattedEnd = secondsToMinutes(currentEnd);
-      convertedOutput += `${subtitleIndex++}\n`;
-      convertedOutput += formattedStart + ' --> ' + formattedEnd + '\n';
-      convertedOutput += nextLine + '\n\n';
       output.push({
         id: subtitleIndex,
         timestamps: [formattedStart, formattedEnd],
@@ -83,13 +75,10 @@ function formatCaptions(json, fps) {
   }
 
   if (nextLine) {
-    convertedOutput += `${subtitleIndex++}\n`;
-    convertedOutput += formattedStart + ' --> ' + formattedEnd + '\n';
-    convertedOutput += nextLine; //Add any leftover words to the end
   }
 
   return output;
-}
+};
 
 function padString(string, length) {
   return (new Array(length + 1).join('0') + string).slice(-length);
@@ -110,21 +99,3 @@ function secondsToMinutes(seconds) {
     padString(seconds, 6)
   );
 }
-
-/* TODO: Turn this into a class with types */
-
-/* output: [
-  {
-    speaker: "spk3",
-    text: "Put the money in the bag!",
-    frames: [120, 150]
-    timestamps: ['0:04:00', '0:05:00]
-  }
-]
-*/
-
-const jsonBlob = require('../assets/spidermanTranscribed.json');
-const srt = formatCaptions(jsonBlob, 30);
-
-console.log(srt);
-// export const createCaptions = (blob, fps) => {};
