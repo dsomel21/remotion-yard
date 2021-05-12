@@ -11,7 +11,10 @@ const Transcribed: React.FC = () => {
 
   return (
     <>
-      <Audio src={spidermanAudio} startFrom={30 * 10} />
+      <Audio
+        src={spidermanAudio}
+        // startFrom={30 * 10}
+      />
       <p>FPS is: {fps}</p>
       <p
         style={{

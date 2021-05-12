@@ -849,10 +849,22 @@ astral-regex@^2.0.0:
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-2.0.0.tgz#483143c567aeed4785759c0865786dc77d7d2e31"
   integrity sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==
 
+async@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/async/-/async-3.2.0.tgz#b3a2685c5ebb641d3de02d161002c60fc9f85720"
+  integrity sha512-TR2mEZFVOj2pLStYxLht7TyfuRzaydfpxr3k9RpHIzMgw7A64dzsdqCxH1WJyQdoe8T10nDXd9wnEigmiuHIZw==
+
 atob@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
+
+aws-transcription-to-srt@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/aws-transcription-to-srt/-/aws-transcription-to-srt-1.0.6.tgz#1eb796859aa857631b85a86f6a1ce04afe026d52"
+  integrity sha512-sVizTrSLgCkjDn0c/0DmvVjVr/RA+cx8dsreOZ7YAO8mWIQr1ABGjZDDn0GEay9rbVrU5BMPwkDyKcPS3f9z/A==
+  dependencies:
+    async "^3.2.0"
 
 "babel-plugin-styled-components@>= 1.12.0":
   version "1.12.0"

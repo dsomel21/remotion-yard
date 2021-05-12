@@ -13,7 +13,7 @@ export const RemotionVideo: React.FC = () => {
       <Composition
         id="SpidermanAudio"
         component={Transcribed}
-        durationInFrames={90}
+        durationInFrames={30 * 300}
         fps={30}
         width={1920}
         height={1080}
