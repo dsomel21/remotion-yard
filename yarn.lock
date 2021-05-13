@@ -189,7 +189,7 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@remotion/bundler@^2.0.0", "@remotion/bundler@^2.1.2":
+"@remotion/bundler@^2.1.2":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@remotion/bundler/-/bundler-2.1.2.tgz#d8454c1f7254a453bdef324d6b8eff372c05b6c2"
   integrity sha512-4IIvJKd4/S1HZcx1kg1c4lLvuz0R9qSe63WC8pAxGaHnrTMmlwUkhrEzxveAsMzwJekM1cH3g4zYl8QDKLZ1iA==
@@ -212,7 +212,7 @@
     webpack "5.33.2"
     webpack-hot-middleware "^2.25.0"
 
-"@remotion/cli@^2.0.0":
+"@remotion/cli@^2.1.2":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@remotion/cli/-/cli-2.1.2.tgz#7e01fc9068482c12b14595ebc3e7dfc28bcf66d0"
   integrity sha512-rP8UEQjOxbWbqAmBa9hLLjOeAXMMKfqVZh1OZaA94ToKnYMUlhmzMLhCGDbYghVqiQ5lEfKkWr/nlYXWzHRHNA==
@@ -232,7 +232,7 @@
     webpack "5.33.2"
     xns "^2.0.7"
 
-"@remotion/eslint-config@^2.0.0":
+"@remotion/eslint-config@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@remotion/eslint-config/-/eslint-config-2.1.0.tgz#78e966462e50798672748225c679f4e12554c9d9"
   integrity sha512-CdeqGZ/38TWEs68JW9Ff5bmh7CZ8Kq6wKppSWcMIm2NEQwfbsimsdN4nN0rmpdobND+pebemYdpe/mJedZThow==
@@ -266,7 +266,7 @@
   dependencies:
     remotion "^2.1.2"
 
-"@remotion/renderer@^2.0.0", "@remotion/renderer@^2.1.2":
+"@remotion/renderer@^2.1.2":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@remotion/renderer/-/renderer-2.1.2.tgz#78de99f844bc20efbe6bfc6d5ef0837bc8bbc3fe"
   integrity sha512-s5cWWCFXBTUp1lpR+MOpNwvbTmk/p+jDnvToDMsc4laRprthAH8Ks2lbfWx+icykgFgAyw97WmOxfps1OXI6ug==
@@ -3657,7 +3657,7 @@ registry-url@^5.0.0:
   dependencies:
     rc "^1.2.8"
 
-remotion@^2.0.0, remotion@^2.1.2:
+remotion@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/remotion/-/remotion-2.1.2.tgz#375d5dfa9f15dc360595af27d6a809d2c1e6a470"
   integrity sha512-AWeoBuSM/pP5C/S/OMWEZE+84qtcFYzshyD3vk7k2eRJaKQxVYduVmu5wMIPH6AWg09eAoNhr9FuPqFyhsiEYA==

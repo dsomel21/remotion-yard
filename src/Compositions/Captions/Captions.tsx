@@ -1,10 +1,6 @@
 import React, { useMemo } from 'react';
 import { Sequence } from 'remotion';
-import { formatCaptions } from '../services/captions';
-
-import spidermanAudio from '../assets/spidermanAudio.mp3';
-import spidermanVideo from '../assets/spidermanVideo.mp4';
-import spidermanText from '../assets/spidermanTranscribed.json';
+import { formatCaptions } from '../../services/captions';
 
 interface CaptionObj {
   id: number;
@@ -43,10 +39,6 @@ const Captions: React.FC<{
       );
     });
   }, [allCaptions]);
-
-  console.log('==================================');
-  console.log(captionSequences);
-  console.log('==================================');
 
   return (
     <>{captionSequences?.map((captionSequence: React.FC) => captionSequence)}</>

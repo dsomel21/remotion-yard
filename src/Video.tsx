@@ -5,8 +5,8 @@ import { Logo } from './HelloWorld/Logo';
 import { Subtitle } from './HelloWorld/Subtitle';
 import { Title } from './HelloWorld/Title';
 
-import Spiderman from './Spiderman';
-import Alexander from './Alexander';
+import Spiderman from './Compositions/Spiderman';
+import Alexander from './Compositions/Alexander';
 
 export const RemotionVideo: React.FC = () => {
   return (

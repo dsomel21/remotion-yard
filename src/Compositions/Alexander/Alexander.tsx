@@ -1,11 +1,10 @@
 import React from 'react';
-import { useCurrentFrame, useVideoConfig, Video, Sequence } from 'remotion';
+import { useVideoConfig, Video } from 'remotion';
 import Captions from '../Captions';
-import alexanderVideo from '../assets/rsClip.mp4';
-import alexanderText from '../assets/rsTranscribed.json';
+import alexanderVideo from '../../assets/rsClip.mp4';
+import alexanderText from '../../assets/rsTranscribed.json';
 
 const Alexander: React.FC = () => {
-  //   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
   return (
