@@ -12,8 +12,8 @@ interface CaptionObj {
 const Captions: React.FC<{
   transcribedObj: object;
   fps: number;
-  style?: object;
-}> = ({ transcribedObj, fps }) => {
+  customStyles?: object;
+}> = ({ transcribedObj, fps, customStyles }) => {
   /*
    *  formatCaptions() could be expensive
    */
@@ -34,7 +34,11 @@ const Captions: React.FC<{
           from={caption.framestamps[0]}
           durationInFrames={caption.framestamps[1] - caption.framestamps[0]}
         >
-          <p style={{ color: 'red', fontSize: '32px' }}>{caption.content}</p>
+          <div className="caption-container">
+            <p style={customStyles || { color: 'red', fontSize: '32px' }}>
+              {caption.content}
+            </p>
+          </div>
         </Sequence>
       );
     });

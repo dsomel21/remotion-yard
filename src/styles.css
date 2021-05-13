@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "Graphik Regular";
+  
+  src: local('Graphik-Regular.woff2'), url(/src/assets/fonts/Graphik-Regular.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Graphik Italic";
+ 
+  src: local('Graphik-RegularItalic.woff2'), url(/src/assets/fonts/Graphik-RegularItalic.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Graphik Bold";  
+  src: local('Graphik-Bold.woff2'), url(/src/assets/fonts/Graphik-Bold.woff2) format("woff2");
+}
+
+.caption-container {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  position: absolute;
+  bottom: 30px;
+  text-align: center;
+  justify-content: center;
+  align-items: flex-start;
+}
