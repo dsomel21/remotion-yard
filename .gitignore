@@ -104,10 +104,10 @@ dist
 .tern-port
 
 # Ignore the output video from Git but not videos you import into src/.
-*.mp4
-!src**/*.mp4
-*.mp3
-!src**/*.mp3
+# *.mp4
+# !src**/*.mp4
+# *.mp3
+# !src**/*.mp3
 *.webm
 !src**/*.webm
 *.aac
