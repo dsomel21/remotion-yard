@@ -5,14 +5,22 @@ import { Logo } from './HelloWorld/Logo';
 import { Subtitle } from './HelloWorld/Subtitle';
 import { Title } from './HelloWorld/Title';
 
-import Transcribed from './Transcribed';
+import Spiderman from './Spiderman';
 
 export const RemotionVideo: React.FC = () => {
   return (
     <>
       <Composition
-        id="SpidermanAudio"
-        component={Transcribed}
+        id="Spiderman"
+        component={Spiderman}
+        durationInFrames={30 * 300}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="RyanSinger"
+        component={RyanSinger}
         durationInFrames={30 * 300}
         fps={30}
         width={1920}

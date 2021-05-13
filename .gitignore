@@ -114,3 +114,5 @@ dist
 !src**/*.aac
 *.wav
 !src**/*.wav
+
+.DS_Store

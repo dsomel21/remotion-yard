@@ -24,7 +24,7 @@ export const formatCaptions = (json, fps) => {
       formattedEnd = secondsToMinutes(currentEnd);
 
       output.push({
-        id: subtitleIndex,
+        id: subtitleIndex++,
         timestamps: [formattedStart, formattedEnd],
         framestamps: [
           Math.floor(currentStart * fps),
@@ -46,7 +46,7 @@ export const formatCaptions = (json, fps) => {
       const currentEnd = json.results.items[index - 1].end_time;
       formattedEnd = secondsToMinutes(currentEnd);
       output.push({
-        id: subtitleIndex,
+        id: subtitleIndex++,
         timestamps: [formattedStart, formattedEnd],
         framestamps: [
           Math.floor(currentStart * fps),
