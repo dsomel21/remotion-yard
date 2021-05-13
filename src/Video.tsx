@@ -6,6 +6,7 @@ import { Subtitle } from './HelloWorld/Subtitle';
 import { Title } from './HelloWorld/Title';
 
 import Spiderman from './Spiderman';
+import Alexander from './Alexander';
 
 export const RemotionVideo: React.FC = () => {
   return (
@@ -19,12 +20,12 @@ export const RemotionVideo: React.FC = () => {
         height={1080}
       />
       <Composition
-        id="RyanSinger"
-        component={RyanSinger}
+        id="Alexander"
+        component={Alexander}
         durationInFrames={30 * 300}
         fps={30}
-        width={1920}
-        height={1080}
+        width={1280}
+        height={720}
       />
       {/* 
 			<Composition
