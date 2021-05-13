@@ -5,12 +5,12 @@ import alexanderVideo from '../assets/rsClip.mp4';
 import alexanderText from '../assets/rsTranscribed.json';
 
 const Alexander: React.FC = () => {
-  const frame = useCurrentFrame();
+  //   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
   return (
     <>
-      <Video src={alexanderVideo} startFrom={60} />
+      <Video src={alexanderVideo} />
       <Captions transcribedObj={alexanderText} fps={fps} />
     </>
   );
