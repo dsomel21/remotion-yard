@@ -33,25 +33,29 @@ async function signIntoVidyard(page) {
  * @desc: It will get your LAST rendered video and upload that to your Vidyard account
  * @return: Void
  */
-async function uploadLatestVideo() {
+async function uploadLatestVideo(page) {
   const tmpPath = path.resolve(__dirname, '..', '..', 'tmp');
 
   const videoPath = getLastestFileCreated('mp4', tmpPath);
-  const thumbnailPath = getLastestFileCreated('jpeg', tmpPath);
-  const content = JSON.parse(
-    getContentFromFile(getLastestFileCreated('json', tmpPath))
-  );
+  // const content = JSON.parse(
+  //   getContentFromFile(getLastestFileCreated('json', tmpPath))
+  // );
   console.log('----------------------------------');
-  console.log(videoPath, content);
+  console.log(videoPath);
   console.log('----------------------------------');
-  // await new InstagramUploadService(content).execute(videoPath, thumbnailPath);
-  // npx remotion render src/index.tsx HelloWorld out.mp4
+
+  await page.waitForSelector('.actionbar-base-right button', {
+    visible: false,
+  });
+  await page.click('.actionbar-base-right button');
+  console.log('----------------------------------');
+  await page.click('[data-testid="new-upload"]');
 }
 
 (async function connectToVidyard() {
-  // const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: false });
 
-  // const page = await openVidyardWebsite(browser);
-  // await signIntoVidyard(page);
-  await uploadLatestVideo();
+  const page = await openVidyardWebsite(browser);
+  await signIntoVidyard(page);
+  await uploadLatestVideo(page);
 })();
