@@ -47,9 +47,14 @@ async function uploadLatestVideo(page) {
   await page.waitForSelector('.actionbar-base-right button', {
     visible: false,
   });
-  await page.click('.actionbar-base-right button');
-  console.log('----------------------------------');
-  await page.click('[data-testid="new-upload"]');
+  // await page.click('.actionbar-base-right button');
+  // console.log('----------------------------------');
+  // await page.waitForSelector('[data-testid="new-upload"]');
+  // await page.click('[data-testid="new-upload"]');
+
+  const elementHandle = await page.$('input[type=file]');
+  await elementHandle.uploadFile(videoPath);
+  // await page.click('selector-of-submit-button'); // might not be necessary
 }
 
 (async function connectToVidyard() {
