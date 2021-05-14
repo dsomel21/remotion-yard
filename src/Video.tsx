@@ -11,7 +11,7 @@ export const RemotionVideo: React.FC = () => {
       <Composition
         id="Spiderman"
         component={Spiderman}
-        durationInFrames={30 * 300}
+        durationInFrames={30 * 120}
         fps={30}
         width={1920}
         height={1080}
@@ -21,7 +21,7 @@ export const RemotionVideo: React.FC = () => {
       <Composition
         id="Alexander"
         component={Alexander}
-        durationInFrames={30 * 300}
+        durationInFrames={30 * 132}
         fps={30}
         width={1280}
         height={720}
