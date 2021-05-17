@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const getLastestFileCreated = (fileExt, dirPath) => {
+const getLatestFileCreated = (fileExt, dirPath) => {
   const files = fs.readdirSync(dirPath);
 
   const fileTimestamp = files
@@ -34,4 +34,4 @@ const getContentFromFile = filePath => {
   return data;
 };
 
-module.exports = { getLastestFileCreated, getContentFromFile };
+module.exports = { getLatestFileCreated, getContentFromFile };

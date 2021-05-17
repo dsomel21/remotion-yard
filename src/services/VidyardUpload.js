@@ -1,5 +1,6 @@
+require('dotenv').config();
 const puppeteer = require('puppeteer');
-const { getLastestFileCreated, getContentFromFile } = require('./getFiles');
+const { getLatestFileCreated } = require('./getFiles');
 const path = require('path');
 
 async function openVidyardWebsite(browser) {
@@ -12,10 +13,10 @@ async function openVidyardWebsite(browser) {
 
 async function signIntoVidyard(page) {
   const navigationPromise = page.waitForNavigation();
-  await page.setDefaultNavigationTimeout(100);
+  // await page.setDefaultNavigationTimeout(250);
 
   /* Input Email */
-  await page.waitForSelector('input[type="email"]');
+  await page.waitForSelector('input[type="email"]', { visible: true });
   await page.type('input[type="email"]', process.env.VIDYARD_EMAIL);
 
   /* Input Password */
@@ -36,11 +37,8 @@ async function signIntoVidyard(page) {
 async function uploadLatestVideo(page) {
   const tmpPath = path.resolve(__dirname, '..', '..', 'tmp');
 
-  const videoPath = getLastestFileCreated('mp4', tmpPath);
-  // const content = JSON.parse(
-  //   getContentFromFile(getLastestFileCreated('json', tmpPath))
-  // );
-  console.log('----------------------------------');
+  const videoPath = getLatestFileCreated('mp4', tmpPath);
+
   console.log(videoPath);
   console.log('----------------------------------');
 
@@ -54,13 +52,17 @@ async function uploadLatestVideo(page) {
 
   const elementHandle = await page.$('input[type=file]');
   await elementHandle.uploadFile(videoPath);
-  // await page.click('selector-of-submit-button'); // might not be necessary
 }
 
 (async function connectToVidyard() {
-  const browser = await puppeteer.launch({ headless: false });
+  const browser = await puppeteer.launch({ headless: true });
 
-  const page = await openVidyardWebsite(browser);
-  await signIntoVidyard(page);
-  await uploadLatestVideo(page);
+  try {
+    const page = await openVidyardWebsite(browser);
+    await signIntoVidyard(page);
+    await uploadLatestVideo(page);
+    console.log('✅ File has been uploaded to your Vidyard account.');
+  } catch (error) {
+    console.log(`❌ Failed to upload: ${err}`);
+  }
 })();
