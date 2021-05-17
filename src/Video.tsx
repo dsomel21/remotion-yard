@@ -3,6 +3,7 @@ import { Composition } from 'remotion';
 
 import Spiderman from './Compositions/Spiderman';
 import Alexander from './Compositions/Alexander';
+import VidyardExample from './Compositions/VidyardExample';
 
 export const RemotionVideo: React.FC = () => {
   return (
@@ -11,7 +12,7 @@ export const RemotionVideo: React.FC = () => {
       <Composition
         id="Spiderman"
         component={Spiderman}
-        durationInFrames={30 * 300}
+        durationInFrames={30 * 120}
         fps={30}
         width={1920}
         height={1080}
@@ -19,9 +20,18 @@ export const RemotionVideo: React.FC = () => {
 
       {/* Ryan Singer - https://vimeo.com/491222729 */}
       <Composition
-        id="Alexander"
+        id="AlexanderShort"
         component={Alexander}
-        durationInFrames={30 * 300}
+        durationInFrames={30 * 10}
+        fps={30}
+        width={1280}
+        height={720}
+      />
+
+      <Composition
+        id="VidyardExample"
+        component={VidyardExample}
+        durationInFrames={30 * 10}
         fps={30}
         width={1280}
         height={720}
