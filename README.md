@@ -61,12 +61,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-
-
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_usernam3`, `repo_nam3`, `twitter_handl3`, `email`, `project_title`, `project_description`
-
+With this repo, you can quickly build video compositions using React Components and have them accurately captioned as well. Once you are satisfied, you can render and upload it to [Vidyard](https://vidyard.com/) as well! 
 
 ### Built With
 
@@ -107,7 +102,7 @@ The only dependency that Remotion depends on is NodeJS and FFMPEG. You can view 
 
 3. Run the preview in the browser
     ```sh
-      yarn start
+    yarn start
     ```
 
 <!-- USAGE EXAMPLES -->
